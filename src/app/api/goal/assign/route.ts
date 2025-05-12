@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     await connectMongo();
 
     // Fetch the goal with its courses
-    const goal = await GoalModel.findById(goalId).populate("courses");
+    const goal = await GoalModel.findById(goalId);
     if (!goal) {
       return NextResponse.json({ message: "Goal not found" }, { status: 404 });
     }
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
 
-    if (user.assignedGoasl) {
+    if (user.assignedGoals) {
       user.assignedGoals.push(goal._id);
     } else {
       user.assignedGoals = [goal._id];
