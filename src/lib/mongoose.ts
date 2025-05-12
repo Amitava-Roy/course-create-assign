@@ -15,7 +15,7 @@ interface MongooseCache {
 
 // Extend Node's global object (type-only, not a real var)
 declare global {
-  var mongoose: MongooseCache | undefined;
+  let mongoose: MongooseCache | undefined;
 }
 
 // Safely access the global object
